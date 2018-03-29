@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         APIInterface apiService = APIClient.getClient().create(APIInterface.class);
 
         retrofit2.Call call = apiService.getTopRatedMovies(api_key);
+
         call.enqueue(new Callback<MoviesResponse>(){
 
             @Override

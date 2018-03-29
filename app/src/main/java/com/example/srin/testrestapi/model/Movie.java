@@ -15,6 +15,7 @@ public class Movie {
 
     @SerializedName("genre_ids")
     private List<Integer> genreIds = new ArrayList<Integer>();
+    //GenreIds genreIds;
 
     @SerializedName("id")
     private Integer id;
