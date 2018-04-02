@@ -1,6 +1,7 @@
 package com.example.srin.testrestapi.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.orm.SugarRecord;
 
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  * Created by SRIN on 3/29/2018.
  */
 
-public class MoviesResponse {
+public class MoviesResponse{
     @SerializedName("page")
     private int page;
 

@@ -5,14 +5,19 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.telecom.Call;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.srin.testrestapi.R;
 import com.example.srin.testrestapi.adapter.MoviesAdapter;
+import com.example.srin.testrestapi.model.Genre;
 import com.example.srin.testrestapi.model.Movie;
+import com.example.srin.testrestapi.model.MovieDatabase;
+import com.example.srin.testrestapi.model.MovieDetailsResponse;
 import com.example.srin.testrestapi.model.MoviesResponse;
 import com.example.srin.testrestapi.rest.APIClient;
 import com.example.srin.testrestapi.rest.APIInterface;
+import com.orm.SugarContext;
 
 import java.util.List;
 
@@ -27,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SugarContext.init(this);
         setContentView(R.layout.activity_main);
 
         if(api_key.isEmpty()) {
@@ -37,18 +43,48 @@ public class MainActivity extends AppCompatActivity {
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        APIInterface apiService = APIClient.getClient().create(APIInterface.class);
+        final APIInterface apiService = APIClient.getClient().create(APIInterface.class);
 
-        retrofit2.Call call = apiService.getTopRatedMovies(api_key);
+        retrofit2.Call call = apiService.getUpcomingMovies(api_key);
 
         call.enqueue(new Callback<MoviesResponse>(){
 
             @Override
             public void onResponse(retrofit2.Call<MoviesResponse> call, Response<MoviesResponse> response) {
                 int statusCode = response.code();
-                List<Movie> movie = response.body().getResult();
-                recyclerView.setAdapter(new MoviesAdapter(movie, R.layout.movie_list, getApplicationContext()));
 
+                if(statusCode == 200) {
+                    List<Movie> movie = response.body().getResult();
+
+                    for(int i = 0; i < movie.size(); i++) {
+                        MovieDatabase md = new MovieDatabase(movie.get(i).getMovie_id());
+                        md.setGenre_name(movie.get(i).getTitle());
+                        md.setMovieId(movie.get(i).getMovie_id());
+                        md.setId(movie.get(i).getMovie_id().longValue());
+                        md.save();
+                    }
+
+                    final MovieDatabase mdd;
+
+                    /*for(int i = 0; i < movie.size(); i++) {
+                        mdd = MovieDatabase.findById(MovieDatabase.class, movie.get(i).getMovie_id());
+                        retrofit2.Call callDetails = apiService.getMovieDetails(movie.get(i).getMovie_id(), api_key);
+
+                        callDetails.enqueue(new Callback<MovieDetailsResponse>() {
+                            @Override
+                            public void onResponse(retrofit2.Call<MovieDetailsResponse> call, Response response) {
+                                //mdd.getGenre_name(response.)
+                            }
+
+                            @Override
+                            public void onFailure(retrofit2.Call call, Throwable t) {
+
+                            }
+                        });
+                    }*/
+
+                    recyclerView.setAdapter(new MoviesAdapter(movie, R.layout.movie_list, getApplicationContext()));
+                }
             }
 
             @Override

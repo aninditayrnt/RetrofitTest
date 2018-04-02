@@ -1,6 +1,7 @@
 package com.example.srin.testrestapi.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.orm.SugarRecord;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,16 +10,12 @@ import java.util.List;
  * Created by SRIN on 3/29/2018.
  */
 
-public class Movie {
+public class Movie{
     @SerializedName("original_title")
     private String originalTitle;
 
-    @SerializedName("genre_ids")
-    private List<Integer> genreIds = new ArrayList<Integer>();
-    //GenreIds genreIds;
-
     @SerializedName("id")
-    private Integer id;
+    private Integer movie_id;
 
     @SerializedName("release_date")
     private String releaseDate;
@@ -29,6 +26,8 @@ public class Movie {
     @SerializedName("title")
     private String title;
 
+    @SerializedName("poster_path")
+    private String poster_path;
 
     public String getOriginalTitle() {
         return originalTitle;
@@ -36,22 +35,6 @@ public class Movie {
 
     public void setOriginalTitle(String originalTitle) {
         this.originalTitle = originalTitle;
-    }
-
-    public List<Integer> getGenreIds() {
-        return genreIds;
-    }
-
-    public void setGenreIds(List<Integer> genreIds) {
-        this.genreIds = genreIds;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getReleaseDate() {
@@ -76,5 +59,21 @@ public class Movie {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getPoster_path() {
+        return poster_path;
+    }
+
+    public void setPoster_path(String poster_path) {
+        this.poster_path = poster_path;
+    }
+
+    public Integer getMovie_id() {
+        return movie_id;
+    }
+
+    public void setMovie_id(Integer movie_id) {
+        this.movie_id = movie_id;
     }
 }
