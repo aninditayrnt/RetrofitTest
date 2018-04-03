@@ -23,6 +23,7 @@ import retrofit2.Response;
 
 public class MovieDetailsActivity extends AppCompatActivity {
     private final static String api_key = "0a93542634dd25ff0e5108bc0716a4bf";
+    StringBuilder str = new StringBuilder();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,12 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
                 Picasso.with(getApplicationContext()).load("https://image.tmdb.org/t/p/w500" + response.body().getPosterPath()).into(poster);
                 movieTitle.setText(response.body().getMovieTitle());
-//                genre.setText(response.body().getGenre().getGenre_name());
+                for(int i = 0; i < response.body().getGenre().size(); i++) {
+                    str.append(response.body().getGenre().get(i).getGenre_name() + ", ");
+                }
+                str.delete(str.length()-2,str.length());
+                genre.setText(str.toString());
+//                genre.setText(response.body().getGenre().get(0).getGenre_name());
                 year.setText(response.body().getDate().substring(0, 4));
                 description.setText(response.body().getDescription());
             }

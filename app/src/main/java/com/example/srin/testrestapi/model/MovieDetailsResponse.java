@@ -23,16 +23,6 @@ public class MovieDetailsResponse {
 
     @SerializedName("release_date")
     private String date;
-
-//    public Genre getGenre() {
-//        return genre;
-//    }
-//
-//    public void setGenre(Genre genre) {
-//        this.genre = genre;
-//    }
-
-
     public String getPosterPath() {
         return posterPath;
     }
@@ -63,5 +53,13 @@ public class MovieDetailsResponse {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public List<Genre> getGenre() {
+        return genre;
+    }
+
+    public void setGenre(List<Genre> genre) {
+        this.genre = genre;
     }
 }
