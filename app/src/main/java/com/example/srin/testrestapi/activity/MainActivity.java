@@ -56,31 +56,12 @@ public class MainActivity extends AppCompatActivity {
                 if(statusCode == 200) {
                     List<Movie> movie = response.body().getResult();
 
-                    for(int i = 0; i < movie.size(); i++) {
+                    /*for(int i = 0; i < movie.size(); i++) {
                         MovieDatabase md = new MovieDatabase(movie.get(i).getMovie_id());
                         md.setGenre_name(movie.get(i).getTitle());
                         md.setMovieId(movie.get(i).getMovie_id());
                         md.setId(movie.get(i).getMovie_id().longValue());
                         md.save();
-                    }
-
-                    final MovieDatabase mdd;
-
-                    /*for(int i = 0; i < movie.size(); i++) {
-                        mdd = MovieDatabase.findById(MovieDatabase.class, movie.get(i).getMovie_id());
-                        retrofit2.Call callDetails = apiService.getMovieDetails(movie.get(i).getMovie_id(), api_key);
-
-                        callDetails.enqueue(new Callback<MovieDetailsResponse>() {
-                            @Override
-                            public void onResponse(retrofit2.Call<MovieDetailsResponse> call, Response response) {
-                                //mdd.getGenre_name(response.)
-                            }
-
-                            @Override
-                            public void onFailure(retrofit2.Call call, Throwable t) {
-
-                            }
-                        });
                     }*/
 
                     recyclerView.setAdapter(new MoviesAdapter(movie, R.layout.movie_list, getApplicationContext()));

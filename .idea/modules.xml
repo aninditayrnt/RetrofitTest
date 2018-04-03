@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RetrofitTest.iml" filepath="$PROJECT_DIR$/RetrofitTest.iml" />
+      <module fileurl="file://C:\Users\SRIN\AndroidStudioProjects\TestRestAPI\RetrofitTest.iml" filepath="C:\Users\SRIN\AndroidStudioProjects\TestRestAPI\RetrofitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/TestRestAPI.iml" filepath="$PROJECT_DIR$/TestRestAPI.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

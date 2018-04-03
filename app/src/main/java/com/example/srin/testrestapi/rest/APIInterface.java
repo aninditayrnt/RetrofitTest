@@ -1,5 +1,6 @@
 package com.example.srin.testrestapi.rest;
 
+import com.example.srin.testrestapi.model.MovieDetailsResponse;
 import com.example.srin.testrestapi.model.MoviesResponse;
 
 import retrofit2.Call;
@@ -20,5 +21,5 @@ public interface APIInterface {
     Call<MoviesResponse> getUpcomingMovies(@Query("api_key") String apiKey);
 
     @GET ("movie/{id}")
-    Call<MoviesResponse> getMovieDetails(@Path("id") int id, @Query("api_key") String apiKey);
+    Call<MovieDetailsResponse> getMovieDetails(@Path("id") int id, @Query("api_key") String apiKey);
 }
