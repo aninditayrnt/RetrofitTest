@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.srin.testrestapi.activity.LoginActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:src="@mipmap/logo"/>
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="50dp"
+        android:layout_centerInParent="true"/>
+
+    <EditText
+        android:id="@+id/pass"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:textColor="@android:color/darker_gray"
+        android:layout_below="@+id/username"
+        android:layout_marginTop="10dp"
+        android:inputType="textPassword"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textSize="10dp"
+        android:layout_below="@+id/pass"
+        android:layout_marginTop="20dp"
+        android:textColor="@android:color/background_dark"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/signupButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click here if you didn't have an account"
+        android:layout_below="@+id/loginButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorAccent"/>
+
+</RelativeLayout>
