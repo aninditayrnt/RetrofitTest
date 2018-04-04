@@ -54,10 +54,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if(acc_list.size() != 0) {
                             AccountDatabase ad = AccountDatabase.findById(AccountDatabase.class, acc_list.get(0).getId());
                             if(ad.getPassword().matches(password.getText().toString())) {
-                                username.setText("");
-                                password.setText("");
                                 Intent in = new Intent(this, MainActivity.class);
                                 startActivity(in);
+//                                finish();
                             }else {
                                 Toast.makeText(this, "Username or Password is incorrect", Toast.LENGTH_SHORT).show();
                                 password.setText("");
